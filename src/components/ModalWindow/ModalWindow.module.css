@@ -1,0 +1,33 @@
+.modal {
+  display: flex;
+  gap: 40px;
+  justify-content: center;
+  background-color: transparent;
+  margin-top: 20px;
+}
+
+.btnYes {
+  background-color: #bca8f3;
+  border-radius: 10px;
+  font-size: 18px;
+}
+
+.btnNo:hover,
+.btnNo:focus,
+.btnNo:active {
+  background-color: #a19ab1;
+  color: #ffff;
+}
+
+.btnNo {
+  background-color: #bca8f3;
+  border-radius: 10px;
+  font-size: 18px;
+}
+
+.btnYes:hover,
+.btnYes:focus,
+.btnYes:active {
+  background-color: rgb(223, 81, 81);
+  color: #ffff;
+}

@@ -2,24 +2,25 @@ import { Formik, Form, Field, ErrorMessage } from "formik";
 import { useId } from "react";
 import * as Yup from "yup";
 import s from "./ContactForm.module.css";
-import { addContact } from "../../redux/contactsOps";
+import toast from "react-hot-toast";
+import { addContact } from "../../redux/contacts/operations";
 import { useDispatch } from "react-redux";
+
+export const validationControl = Yup.object().shape({
+  name: Yup.string()
+    .min(3, "Too Short!")
+    .max(50, "Too Long!")
+    .required("Required"),
+  number: Yup.string()
+    .min(3, "Too short")
+    .max(12, "Too long")
+    .required("Required"),
+});
 
 export const ContactForm = () => {
   const dispatch = useDispatch();
   const nameFieldId = useId();
   const numberFieldId = useId();
-
-  const contactScheme = Yup.object().shape({
-    name: Yup.string()
-      .min(3, "Too Short!")
-      .max(50, "Too Long!")
-      .required("Required"),
-    number: Yup.string()
-      .min(3, "Too short")
-      .max(12, "Too long")
-      .required("Required"),
-  });
 
   const initialContact = {
     name: "",
@@ -27,14 +28,33 @@ export const ContactForm = () => {
   };
 
   const handleSubmit = (values, actions) => {
-    dispatch(addContact(values));
+    dispatch(addContact(values))
+      .unwrap()
+      .then(() => {
+        toast("The contact has been added", {
+          style: { background: "#a477e0" },
+          position: "top-center",
+        });
+      })
+      .catch(() => {
+        toast("Was error, please try again", {
+          style: { background: "#fb30c8" },
+          containerStyle: {
+            top: 150,
+            left: 20,
+            bottom: 20,
+            right: 20,
+          },
+        });
+      });
+
     actions.resetForm();
   };
 
   return (
     <Formik
       initialValues={initialContact}
-      validationSchema={contactScheme}
+      validationSchema={validationControl}
       onSubmit={handleSubmit}
     >
       <Form className={s.form}>

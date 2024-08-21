@@ -1,24 +1,26 @@
-.card {
-  display: flex;
+.fieldbox {
+  display: block;
   padding: 10px;
-  border: 1px solid black;
-  border-radius: 5px;
-  margin: 10px;
-  justify-content: space-between;
-  align-items: center;
 }
 
-.wrapper {
+.field {
   display: block;
-  gap: 10px;
-  line-height: 1.2em;
-  font-size: large;
-  font-weight: 500;
-  width: 200px;
+  padding: 10px;
+  width: 250px;
+  border: 1px solid #000000;
+  border-radius: 5px;
 }
+
 .btn {
   padding: 10px;
-  background-color: rgb(214, 120, 120);
+  background-color: rgb(223, 81, 81);
   border: 1px solid black;
   border-radius: 10px;
+}
+
+.btnBox {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 32px;
 }
