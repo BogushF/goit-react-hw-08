@@ -1,17 +1,16 @@
-import { MagnifyingGlass } from "react-loader-spinner";
+import { Blocks } from "react-loader-spinner";
 import s from "./Loader.module.css";
 const Loader = () => {
   return (
     <div className={s.loader}>
-      <MagnifyingGlass
-        visible={true}
+      <Blocks
         height="80"
         width="80"
-        ariaLabel="magnifying-glass-loading"
+        color="#4fa94d"
+        ariaLabel="blocks-loading"
         wrapperStyle={{}}
-        wrapperClass="magnifying-glass-wrapper"
-        glassColor="#c0efff"
-        color="#e15b64"
+        wrapperClass="blocks-wrapper"
+        visible={true}
       />
     </div>
   );
