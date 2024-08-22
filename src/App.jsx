@@ -10,14 +10,16 @@ import { selectIsRefreshing } from "./redux/auth/selectors.js";
 
 const HomePage = lazy(() => import("./pages/HomePage/HomePage.jsx"));
 const NotFoundPage = lazy(() => import("./pages/NotFoundPage/NotFoundPage"));
-const ContactPage = lazy(() => import("./pages/ContactsPage/ContactsPage.jsx"));
+const ContactsPage = lazy(() =>
+  import("./pages/ContactsPage/ContactsPage.jsx")
+);
 const RegisterPage = lazy(() => import("./pages/RegisterPage/RegisterPage"));
 const LoginPage = lazy(() => import("./pages/LoginPage/LoginPage"));
 
 const App = () => {
   const dispatch = useDispatch();
   const isRefreshing = useSelector(selectIsRefreshing);
-
+  console.log(isRefreshing);
   useEffect(() => {
     dispatch(refreshUser());
   }, [dispatch]);
@@ -46,7 +48,7 @@ const App = () => {
         <Route
           path="/contacts"
           element={
-            <PrivateRoute redirectTo="/login" component={<ContactPage />} />
+            <PrivateRoute redirectTo="/login" component={<ContactsPage />} />
           }
         />
         <Route path="*" element={<NotFoundPage />} />

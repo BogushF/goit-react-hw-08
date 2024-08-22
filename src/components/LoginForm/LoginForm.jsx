@@ -9,13 +9,14 @@ const LoginForm = () => {
 
   const validationControl = Yup.object().shape({
     email: Yup.string()
-      .min(5, "Too Short!")
-      .max(50, "Too Long!")
-      .required("Required"),
+      .email("Invalid email format")
+      .max(50, "Email is too long")
+      .required("Please enter your email"),
+
     password: Yup.string()
-      .min(5, "Too short")
-      .max(18, "Too long")
-      .required("Required"),
+      .min(6, "Password is too short")
+      .max(50, "Password is too long")
+      .required("Please enter your password"),
   });
 
   const handleSubmit = (values, actions) => {
@@ -37,12 +38,12 @@ const LoginForm = () => {
           <label className={s.label}>
             Email
             <Field type="email" name="email" className={s.field} />
-            <ErrorMessage className={s.err} name="name" component="span" />
+            <ErrorMessage className={s.err} name="email" component="span" />
           </label>
           <label className={s.label}>
             Password
             <Field type="password" name="password" className={s.field} />
-            <ErrorMessage className={s.err} name="name" component="span" />
+            <ErrorMessage className={s.err} name="password" component="span" />
           </label>
           <button type="submit" className={s.btn}>
             Login

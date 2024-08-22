@@ -24,3 +24,7 @@
   justify-content: center;
   gap: 32px;
 }
+
+.error {
+  color: red;
+}
